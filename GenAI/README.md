@@ -1,0 +1,27 @@
+# Day 1 — LLM Foundations
+
+## Objective
+Learn tokens, prompt basics, and API integration.
+
+## What I built
+- Connected to OpenRouter API
+- Used an LLM model (nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free)
+- Generated responses using prompts
+
+## Concepts learned
+- Tokens
+- Prompting
+- API calls
+- Environment variables
+
+## Sample prompt
+"Explain tokens in simple words"
+
+## Tech stack
+- Python
+- PyCharm
+- OpenRouter
+
+## What I Learned
+- Given different types of prompts to the model and observed the difference in output
+- API Connections
