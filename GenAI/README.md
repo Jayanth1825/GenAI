@@ -25,3 +25,8 @@ Learn tokens, prompt basics, and API integration.
 ## What I Learned
 - Given different types of prompts to the model and observed the difference in output
 - API Connections
+
+
+# Day 2 - Prompt Engineering Basics
+- Zero shot Prompting
+- Few shot Prompting

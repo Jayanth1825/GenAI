@@ -10,7 +10,7 @@ response = client.chat.completions.create(
     model="nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
     messages=[
         {"role": "user",
-         "content": "You are a machine learning professor. Explain tokens with an example."
+         "content": "Tell about india."
         }
     ]
 )
