@@ -30,3 +30,7 @@ Learn tokens, prompt basics, and API integration.
 # Day 2 - Prompt Engineering Basics
 - Zero shot Prompting
 - Few shot Prompting
+
+# Day 3 - System Prompts vs User Prompts
+- Learned difference between System prompt and user prompt
+- Given different scenarios to the model and observed the difference in output.
