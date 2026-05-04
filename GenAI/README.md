@@ -34,3 +34,7 @@ Learn tokens, prompt basics, and API integration.
 # Day 3 - System Prompts vs User Prompts
 - Learned difference between System prompt and user prompt
 - Given different scenarios to the model and observed the difference in output.
+
+# Day 3 - Structured Outputs and JSON Format
+- Learned what is JSON.
+- Tested on a resume to extract key values from the resume in JSON Format.
