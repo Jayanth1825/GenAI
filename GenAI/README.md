@@ -35,6 +35,10 @@ Learn tokens, prompt basics, and API integration.
 - Learned difference between System prompt and user prompt
 - Given different scenarios to the model and observed the difference in output.
 
-# Day 3 - Structured Outputs and JSON Format
+# Day 4 - Structured Outputs and JSON Format
 - Learned what is JSON.
 - Tested on a resume to extract key values from the resume in JSON Format.
+
+# Day 5 - Function/Tool Calling Basics
+- Learned how LLMs uses external tool calling when required
+- LLMs can decide when to use external tools.
