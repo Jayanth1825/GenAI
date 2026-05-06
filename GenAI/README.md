@@ -42,3 +42,7 @@ Learn tokens, prompt basics, and API integration.
 # Day 5 - Function/Tool Calling Basics
 - Learned how LLMs uses external tool calling when required
 - LLMs can decide when to use external tools.
+
+# Day 6 - Built first version of Resume Analyzer
+- Extracted skills, projects and Experience sections from Resume and given feedback accordingly
+- Suggested improvements to make resume ATS friendly.
