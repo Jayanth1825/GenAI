@@ -46,3 +46,8 @@ Learn tokens, prompt basics, and API integration.
 # Day 6 - Built first version of Resume Analyzer
 - Extracted skills, projects and Experience sections from Resume and given feedback accordingly
 - Suggested improvements to make resume ATS friendly.
+
+# Day 7 - Built basic Streamlit UI for Resume Analyzer
+- Given input skills, projects, experience.
+- Done JSON Parsing.
+- Given Score based on skills, projects and experience.
