@@ -6,6 +6,15 @@ from openai import OpenAI
 
 
 load_dotenv()
+
+
+st.set_page_config(
+    page_title="Smart AI Resume Analyzer",
+    page_icon="📄",
+    layout="wide"
+)
+
+
 client = OpenAI(
     api_key=os.getenv("OPENROUTER_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
@@ -15,73 +24,175 @@ client = OpenAI(
 MODEL_NAME = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"
 
 
-st.title("AI Resume Analyzer")
-
-
-resume_text = st.text_area(
-    "Paste your resume here:"
+# HERO
+st.markdown("# 📄 Smart AI Resume Analyzer")
+st.caption(
+    "AI-powered ATS analysis, skill gap detection, and career recommendations."
 )
 
 
-if st.button("Analyze Resume"):
+# SIDEBAR
+with st.sidebar:
 
-    prompt = f"""
-    You are an expert HR recruiter.
+    st.header("Features")
 
-    Analyze this resume.
-
-    Extract:
-    - name
-    - skills
-    - strengths
-    - weaknesses
-    - improvement_suggestions
-
-    Return ONLY valid JSON.
-
-    Resume:
-    {resume_text}
-    """
+    st.write("✅ Resume Analysis")
+    st.write("✅ ATS Score")
+    st.write("✅ Skill Gap Detection")
+    st.write("✅ Career Suggestions")
 
 
-    response = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=[
-            {
-                "role": "system",
-                "content": "You are a strict recruiter."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
+# FILE INPUT
+uploaded_file = st.file_uploader(
+    "Upload Resume (.txt)",
+    type=["txt"]
+)
 
 
-    output = response.choices[0].message.content
+if uploaded_file:
+
+    resume_text = uploaded_file.read().decode()
 
 
-    try:
+    if st.button("Analyze Resume"):
 
-        data = json.loads(output)
+        prompt = f"""
+        Analyze this resume.
 
-        st.subheader("Analysis")
+        Return JSON:
 
-        st.json(data)
+        {{
+            "name":"",
+            "skills":[],
+            "strengths":[],
+            "weaknesses":[],
+            "missing_skills":[],
+            "job_roles":[],
+            "experience":""
+        }}
+
+        Resume:
+        {resume_text}
+        """
 
 
-        skills = data.get("skills", [])
+        with st.spinner("Running AI analysis..."):
 
-        score = len(skills) * 10
+            response = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a strict ATS recruiter."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ]
+            )
 
-        st.success(
-            f"Resume Score: {score}/100"
-        )
+
+        output = response.choices[0].message.content
 
 
-    except json.JSONDecodeError:
+        try:
 
-        st.error(
-            "Model did not return valid JSON."
-        )
+            data = json.loads(output)
+
+            skills = data.get("skills", [])
+
+            score = min(
+                len(skills) * 20,
+                100
+            )
+
+            ats_score = min(
+                score + 10,
+                100
+            )
+
+
+            # KPI CARDS
+            c1, c2, c3, c4 = st.columns(4)
+
+            c1.metric(
+                "Resume Score",
+                f"{score}/100"
+            )
+
+            c2.metric(
+                "ATS Score",
+                f"{ats_score}/100"
+            )
+
+            c3.metric(
+                "Skills",
+                len(skills)
+            )
+
+            c4.metric(
+                "Experience",
+                data.get(
+                    "experience",
+                    "N/A"
+                )
+            )
+
+
+            st.progress(score / 100)
+
+
+            # ANALYSIS
+            left, right = st.columns(2)
+
+
+            with left:
+
+                st.subheader("💪 Strengths")
+
+                for item in data.get(
+                        "strengths", []
+                ):
+                    st.success(item)
+
+
+            with right:
+
+                st.subheader("⚠ Weaknesses")
+
+                for item in data.get(
+                        "weaknesses", []
+                ):
+                    st.error(item)
+
+
+            # SKILL GAP
+            st.subheader("📚 Missing Skills")
+
+            for item in data.get(
+                    "missing_skills", []
+            ):
+                st.info(item)
+
+
+            # JOB ROLES
+            st.subheader("🚀 Suggested Roles")
+
+            for item in data.get(
+                    "job_roles", []
+            ):
+                st.write("•", item)
+
+
+            with st.expander(
+                    "View Raw JSON"
+            ):
+                st.json(data)
+
+
+        except:
+
+            st.error(
+                "Invalid JSON returned."
+            )

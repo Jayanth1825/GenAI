@@ -51,3 +51,15 @@ Learn tokens, prompt basics, and API integration.
 - Given input skills, projects, experience.
 - Done JSON Parsing.
 - Given Score based on skills, projects and experience.
+
+# Day 8 - Cost and Token Optimization
+- Given Long Prompt and Short Prompt to the model
+# Long Prompt
+Prompt Tokens: 59
+Completion Tokens: 1795
+Total Tokens: 1854
+# Short Prompt
+Prompt Tokens: 36
+Completion Tokens: 180
+Total Tokens: 216
+- Shorter prompts reduced token usage by 88% while maintaining useful output
