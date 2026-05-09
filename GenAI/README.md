@@ -63,3 +63,7 @@ Prompt Tokens: 36
 Completion Tokens: 180
 Total Tokens: 216
 - Shorter prompts reduced token usage by 88% while maintaining useful output
+
+# Day 9 - Context Window Limitations
+- Learned about context window limitations.
+- Given long inputs to the model and observed that latency is higher than shot inputs.
