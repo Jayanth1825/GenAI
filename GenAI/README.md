@@ -67,3 +67,7 @@ Total Tokens: 216
 # Day 9 - Context Window Limitations
 - Learned about context window limitations.
 - Given long inputs to the model and observed that latency is higher than shot inputs.
+
+# Day 10 - Model Comparison
+- Given same prompt to three models and observed Tokens usage, accuracy, Latency and JSON Quality.
+- Different models perform differently on different tasks.
