@@ -71,3 +71,8 @@ Total Tokens: 216
 # Day 10 - Model Comparison
 - Given same prompt to three models and observed Tokens usage, accuracy, Latency and JSON Quality.
 - Different models perform differently on different tasks.
+
+# Day 11 - Model Evaluation
+- Explored Chatbot Arena
+- Compared different model's response with the same prompt
+- Observed difference in the output.
