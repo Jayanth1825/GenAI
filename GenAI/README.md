@@ -76,3 +76,7 @@ Total Tokens: 216
 - Explored Chatbot Arena
 - Compared different model's response with the same prompt
 - Observed difference in the output.
+
+# Day 12 - Prompts improvements
+- Given different versions of prompt for the same resume.
+- Observed difference as best JSON output, the best feedback and which prompt produces fewer output tokens.
